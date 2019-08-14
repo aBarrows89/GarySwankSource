@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="MobileOptimized" content="width" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta http-equiv="cleartype" content="on" />
+    <META HTTP-EQUIV="Content-Language" CONTENT="EN" />
+    <META NAME="MSSmartTagsPreventParsing" CONTENT="TRUE" />
+    <META NAME="rating" CONTENT="General" />
+    <META NAME="MS.LOCALE" CONTENT="EN-US" />
+    <META NAME="CATEGORY" CONTENT="home page" />
+    <META NAME="robots" CONTENT="index,follow" />
+    <META NAME="revisit-after" CONTENT="31 days" />
+    <META NAME="DC.Coverage.PlaceName" CONTENT="Global" />
+    <META NAME="author" CONTENT="Reliance Network" />
+    <META NAME="distribution" CONTENT="Global" />
+
+    
+
+
+            <title>My Reviews</title>
+            <meta name="keywords" content="real estate, homes, homes for sale, investment property, REI, Pittsburgh real estate, Pittsburgh homes, home buyers, home sellers, " />
+
+    <!-- Scripts -->
+    <script src="//code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/scripts/reliance.jsx?id=381&account=383977"></script>
+    <script type="text/javascript" src="/scripts/site.jsx?id=381&siteDirectory=rees&account=383977&culture=en"></script>
+
+    <!--System Branding-->
+    <link id="searchPolyFillTarget" href="/Areas/CMS/Views/cms-templates/css/global-branding.min.css?v=1.0.7159.20177-rc+598.11dd967c.hotfix--8-8-2019" rel="stylesheet">
+
+    <style>
+        :root {
+            --company-primary-color: #00308A;
+            --company-secondary-color: #777777;
+            --company-tertiary-color: #EE1C26;
+        }
+    </style>
+
+    <!-- JSON-LD -->
+    <script type='application/ld+json'>
+        {
+        "@context":"http://schema.org",
+        "@type":"WebSite",
+        "@id":"#website",
+        "url":"https://garyswank.realestatesolutionspittsburgh.com/",
+        "name": "RE/MAX Real Estate Solutions - Gary Swank",
+        "potentialAction":
+        {
+        "@type":"SearchAction",
+        "target": "https://garyswank.realestatesolutionspittsburgh.com/searchredirect.aspx?cityzip={search_term_string}",
+        "query-input":"required name=search_term_string"
+        }
+        }
+    </script>
+
+</head>
+
+<body class="site-interior-page" id="homeandliving3">
+
+    
+<!-- Styles -->
+<!-- Slider -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.6.0/slick/slick.css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.css" rel="stylesheet">
+
+<!-- Layout Styling -->
+    <link id="polyFillTarget" href="/dist/css/site/homeandliving3.css" rel="stylesheet">
+
+<!-- Featured Properties and Saved Search calls -->
+<script>
+
+    var interiortotalcount = 0;
+    var interiortotalpages = 0;
+
+
+
+    //CMS Featured Properties Content Type Call
+    function getFeaturedPropertiesApi(contentID, pageSize, pageNumber, FilePath, featuredpropertiesID) {
+        $.ajax({
+            url: '/CMS/CmsContent/GetFeaturedPropertiesFromContentID',
+            dataType: 'html',
+            data: {
+                contentID: contentID,
+                accountID: agentAccountId,
+                pageSize: pageSize,
+                pageNumber: pageNumber,
+                relianceApiKey: companyApiKey,
+                FilePath: FilePath
+            },
+            success: function (data) {                
+                $('#' + featuredpropertiesID).html(data);
+                if (FilePath == 'InteriorFeaturedProperties') {
+                    
+                    $('#' + featuredpropertiesID + '-totalcount-properties').text(interiortotalcount + ' Properties');
+                    $('#' + featuredpropertiesID + '-totalpages-of').text('Page 1 of ' + interiortotalpages);
+                } else if(FilePath == 'BioFeaturedProperties') {
+
+                }
+
+                featuredPropertiesSuccess();
+
+                if ($('body').is('#' + rnLayoutName)) {
+                   //console.log('agentweb');
+                } else {
+                    //console.log('crm');
+                    $('#' + featuredpropertiesID).click(function (e) {
+                        e.preventDefault();
+                    });
+                }
+                
+            }
+        });
+    }
+    
+
+
+
+     //CMS Saved Search From SearchID
+    function getSavedSearchListings(searchID, mlsid, pageSize, pageNumber, FilePath, savedsearchID) {        
+        $.ajax({
+            url: '/CMS/CmsContent/GetSavedSearchFromSearchID',
+            dataType: 'html',
+            data: {
+                searchID: searchID,
+                accountID: agentAccountId,
+                mlsID: mlsid,
+                companyID: agentCompanyId,
+                pageSize: pageSize,
+                pageNumber: pageNumber,
+                FilePath: FilePath
+            },
+            success: function (data) {
+                $('#' + savedsearchID).html(data);               
+                if (FilePath == 'InteriorSavedSearchPage') {
+                    $('#' + savedsearchID + '-totalcount-properties').text(interiortotalcount + ' Properties');
+                    $('#' + savedsearchID + '-totalpages-of').text('Page 1 of ' + interiortotalpages);
+                }
+                
+            }
+        });
+    }
+</script>
+
+
+
+
+
+
+<style>
+    :root {
+        --main-color: #48687d;
+        --main-darken: rgb(15, 21, 26);
+        --main-transparent-7: rgba(72, 104, 125, 0.7);
+    }
+</style>
+
+
+<header class="site-header">
+
+    <div class="site-header-contact">
+        <div class="site-container">
+            <ul class="site-header-phone-numbers">
+                    <li>Office Phone - 412.366.2900</li>
+                        <li>Mobile Phone - 412.315.4595</li>
+            </ul>
+
+
+            <ul>
+                <li><a onclick="$(window).trigger('contactmeclick')"><i class="rni-mail"></i></a></li>
+                                <li class="social-facebook"><a target="_blank" href="https://www.facebook.com/garyswankpittsburghrealtor"><i class="rni-facebook"></i></a></li>
+                    <li class="social-twitter"><a target="_blank" href="https://twitter.com/gswankrealtor"><i class="rni-twitter"></i></a></li>
+                <li class="social-misc"><a target="_blank" href="https://www.linkedin.com/in/garyswank/"><i class="rni-linkedin"></i></a></li>
+                <li class="social-blog"><a target="_blank" href="https://garyswankrealtor.blogspot.com/"><i class="rni-rss"></i></a></li>
+
+
+                <li>
+
+
+                        <a href="/?p=findahome.asp&page=extranet&selected=dashboard" class="site-header-nav-login">
+                            <i class="rni-user login"></i>
+                        </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <div class="site-header-logo-nav">
+        <div class="site-container">
+            <div class="site-header-mobile-account" id="siteHeaderMobileAccount">
+        <img src="https://content.mediastg.net/dynamic/RealEstate/company/381/account/383977/photo.jpg" />
+</div>
+
+<ul class="site-header-mobile-account-info">
+    <li class="account-name">Gary Swank</li>
+    <li>REALTOR&lt;sup&gt;&amp;reg;&lt;/sup&gt;</li>
+
+        <li><a href="tel:14123154595"><i class="rni-call"></i> 412.315.4595</a></li>
+        <li><a href="tel:14123662900"><i class="rni-call"></i> 412.366.2900</a></li>
+
+        <li><a href="mailto:garyswank.realtor@gmail.com"><i class="rni-mail"></i> Email Me</a></li>
+</ul>
+
+            <div class="site-header-logo">
+                <a href="/">
+                    <div class="site-header-global-logo">
+
+	    <img src="https://content.mediastg.net/static/RealEstate/company/381/012-logo.png" alt="RE/MAX Real Estate Solutions Logo">
+
+        <div class="site-header-global-office-name">Real Estate Solutions - Lawrenceville</div>
+
+</div>
+
+                    <div class="site-header-name">
+                         Gary<br> Swank
+
+                         <div class="site-header-license">
+                            RS229093
+                        </div>
+                    </div>
+                </a>
+
+                
+            </div>
+
+            <nav role="navigation">
+                
+<ul id="siteHeaderNavigation" style="list-style:none;">
+
+<li class="has-dropdown">                <a>Property Search - 1 </a>
+                <ul class="dropdown" style="list-style: none">
+                            <li><a href="/properties-for-sale" >Property Search - 2</a></li>
+                            <li><a href="/Featured-Properties" >Featured Properties</a></li>
+                            <li><a href="/?p=findahome.asp&amp;page=extranet&amp;selected=dashboard" >My Property Finder</a></li>
+                            <li><a href="/?p=openhouses.asp" >Open Houses</a></li>
+                            <li><a href="/?p=virtualtours.asp" >Virtual Tours</a></li>
+                            <li><a href="/?p=findahome.asp&amp;page=search&amp;selected=mr&amp;mode=N&amp;help=true" >Home Trends</a></li>
+                </ul>
+<li class="has-dropdown">                <a>For Investors </a>
+                <ul class="dropdown" style="list-style: none">
+                            <li><a href="/REI" >REI</a></li>
+                </ul>
+<li class="has-dropdown">                <a>About Me </a>
+                <ul class="dropdown" style="list-style: none">
+                            <li><a href="https://garyswankrealtor.blogspot.com/" target = _blank>My Blog</a></li>
+                            <li><a href="/My-Reviews" >My Reviews</a></li>
+                            <li><a href="/?p=professionalprofile.asp" >Areas Of Expertise</a></li>
+                </ul>
+<li>                <a href="/About-Pittsburgh" >Pittsburgh Info </a>
+<li>                <a href="/About-Pittsburgh" >About Pittsburgh </a>
+<li>                <a href="/Contact" >Contact </a>
+</li></ul>
+
+                <button class="site-header-nav-button" id="navBurger"><span class="site-header-nav-burger"></span></button>
+
+                    <a href="/?p=findahome.asp&page=extranet&selected=dashboard" class="site-header-nav-login">
+                        <i class="rni-user"></i>
+                    </a>
+
+                <a href="/?p=findahome.asp&mode=N" class="site-header-search-button" id="rnSearchCriteriaButton"><i class="rni-search"></i></a>
+
+            </nav>
+        </div>
+    </div>
+
+</header>
+
+
+
+
+
+
+        
+
+
+    
+
+    <div class="site-global-container"> 
+
+
+
+
+
+<div class="site-interior-container">
+
+    <div class="site-row">
+        <div class="site-column full">
+            <section class="site-interior-editor-content" id="interior-text-1-preview-1813">
+                <div id="yui_3_18_1_1_1509459230176_2812" class="review-reviewer-info review-received">
+<div class="review-work-done"><strong>11/04/2018 - lifeissweet3<br /><span>Bought a Single Family home in 2018 in East Allegheny, Pittsburgh, PA</span></strong><span class="minimize preserve-whitespace"><span class="minimize preserve-whitespace"><br /><br />Gary was wonderful to work with when buying my house. I had a few false starts and he never lost his patience and continued to be gracious and helpful. I would highly recommend Gary to anyone looking to buy (or sell!).<br /><br /></span></span>
+<div><strong>11/02/2018 - Lisa C.<br />Bought a Condo Home in 2018 in Pittsburgh, PA<br /></strong></div>
+<span class="minimize preserve-whitespace"><span>Gary was thorough and attentive through every step of the sale of my home. He made an otherwise scary process very easy! I highly recommend Gary and will use his services in the future.</span></span><strong><span class="minimize preserve-whitespace"><br /><br />01/26/2018 -&nbsp;<span>zuser20150722065936380</span><br /></span></strong></div>
+<div class="review-work-done"><strong><span class="minimize preserve-whitespace"><span>Sold a Single Family Home in 2017 in Mt. Washington Pittsburgh, PA</span></span></strong></div>
+<div class="review-work-done"><span class="minimize preserve-whitespace"><span></span></span></div>
+<div class="review-work-done"><span class="minimize preserve-whitespace">We bought a home last summer in Mt. Washington through Gary and had a lot of stumbles in the process. We had multiple closing delays and he navigated the murky waters with grace and tact. On a personal level, he is incredibly warm and spent so much time showing us houses before we made an offer. Not once did he make us feel anything but appreciated. Just a straight shooter who works as your advocate and incredibly easy to talk to. Highly recommend!</span></div>
+<strong><br />09/21/2017 -&nbsp;<a href="https://www.zillow.com/profile/zuser20170329193909950">zuser20170329193909950</a></strong></div>
+<div id="yui_3_18_1_1_1509459230176_1152" class="review-work-done"><strong><span id="yui_3_18_1_1_1509459230176_1160">Bought a Condo home in 2017 in Pittsburgh, PA.</span></strong></div>
+<div class="review-work-done"><strong><span id="yui_3_18_1_1_1509459230176_1160">&nbsp; &nbsp; &nbsp; &nbsp;</span></strong></div>
+<div class="review-work-done"><span class="preserve-whitespace">I was looking for a condo/townhouse. Gary was knowledgeable about types of properties available, HOA fees, and what was available in the market for the locations I was interested in living. He helped me decide upon a fair offering price and continued to be extremely helpful with negotiations after</span><span><span>&nbsp;</span></span><span class="minimize preserve-whitespace" id="yui_3_18_1_1_1509451788626_2806"> the inspection was competed. He promptly responded to emails and text messages. I not only felt like I had an agent, but a friend to assist me with the purchasing process. I highly recommend Gary Swank as a real estate agent.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div id="yui_3_18_1_1_1509459230176_2814" class="review-reviewer-info review-received"><strong>08/30/2017 -&nbsp;<a href="https://www.zillow.com/profile/user0352504">user0352504</a></strong></div>
+<div id="yui_3_18_1_1_1509459230176_1162" class="review-work-done"><strong><span id="yui_3_18_1_1_1509459230176_1166">Bought a Multi Family home in 2017 in Stanton Heights, Pittsburgh, PA.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></strong></div>
+<div class="review-work-done">I had a great experience working with Gary. He helped me purchase two rental properties and in both cases he was a pleasure to work with. Very knowledgeable and responsive; I would particularly recommend him for real estate investors.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+<div id="yui_3_18_1_1_1509451788626_2814" class="review-reviewer-info review-received">
+<div id="yui_3_18_1_1_1509459230176_2816" class="review-reviewer-info review-received"><strong>08/28/2017 -&nbsp;<a href="https://www.zillow.com/profile/user77441943">user77441943</a></strong></div>
+<div id="yui_3_18_1_1_1509459230176_2806" class="review-work-done"><strong><span id="yui_3_18_1_1_1509459230176_2810">Bought a Multi Family home in 2017 in Pittsburgh, PA.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></strong></div>
+</div>
+<div class="review-reviewer-info review-received"></div>
+<div class="review-reviewer-info review-received">Gary was a great help in locating, negotiating &amp; closing a deal on a recent four-plex. His knowledge of the region, business connections and general business acumen helped close the deal quickly and efficiently.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+<div class="review-reviewer-info review-received"></div>
+<div class="review-reviewer-info review-received">
+<div id="yui_3_18_1_1_1509459230176_2822" class="review-reviewer-info review-received"><strong>07/16/2017 -&nbsp;<a href="https://www.zillow.com/profile/len-ulish">Len Ulish</a></strong></div>
+<div id="yui_3_18_1_1_1509459230176_2818" class="review-work-done"><span><strong>Bought a Multi Family home in 2017 in Dormont, Pittsburgh, PA</strong>.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></div>
+<div class="review-work-done"><span>I recently purchased my first home. Gary made the process extremely easy and on several occasions went above and beyond to make sure the process moved along smoothly. The experience was great and I would definitely recommend Gary to others looking to find a home.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+</div>
+<div id="yui_3_18_1_1_1509459230176_2828" class="review-reviewer-info review-received"><strong>06/24/2017 -&nbsp;<a href="https://www.zillow.com/profile/victorwilson1">victorwilson1</a></strong></div>
+<div id="yui_3_18_1_1_1509459230176_2824" class="review-work-done"><strong>Bought a Townhouse home in 2015 in Brighton Heights, Pittsburgh, PA.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong></div>
+<div class="review-work-done">I was a first time home buyer. Gary was professional, patient and willing to answer any questions or concerns that I had. He helped to make a stressful process a little less stressful. If you are in need of an agent be sure contact Gary.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+<section id="yui_3_18_1_1_1509459230176_2889" class="zsg-content-item zsg-fineprint review-metadata">
+<div id="yui_3_18_1_1_1509459230176_2892" class="review-reviewer-info review-received"><strong>04/19/2017 -&nbsp;<a href="https://www.zillow.com/profile/user20461836">user20461836</a></strong></div>
+<div id="yui_3_18_1_1_1509459230176_2888" class="review-work-done"><strong>Bought and sold a Single Family home in 2016 in Sewickley, PA.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</strong></div>
+<div class="review-work-done"><span class="preserve-whitespace">It was an absolute pleasure to work with Gary. He was extremely patient as we were not the easiest clients to work with. After a long search, Gary helped us find our absolute dream house. Once we landed the perfect house, Gary placed our previous home on the market and successfully landed a</span><span><span>&nbsp;</span></span><span class="minimize preserve-whitespace"> contract in less than a week. You will not go wrong by choosing Gary Swank as your realtor! He is one of the best!</span><span><span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></span></div>
+<div class="review-work-done">
+<div id="yui_3_18_1_1_1509459230176_2904" class="review-reviewer-info review-received"><strong>03/22/2017 -&nbsp;<a href="https://www.zillow.com/profile/njl150">njl150</a></strong></div>
+<div class="review-work-done"><strong>Bought and sold a Single Family home in 2016 in Pittsburgh, PA.</strong></div>
+<div id="yui_3_18_1_1_1509459230176_2900" class="review-point-of-contact"><strong>Primary point of contact: Bosco Bowser Properties&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</strong></div>
+</div>
+<div class="review-work-done"><span class="preserve-whitespace" id="yui_3_18_1_1_1509459230176_2911">Knowing you have an agent, who's primary focus is in helping his clients succeed in their goals, brings piece of mind to anyone getting into real estate. Whether you're buying your first home, or building a portfolio of rentals, Gary will not disappoint.&nbsp;</span><span class="preserve-whitespace" id="yui_3_18_1_1_1509459230176_2911">We are currently working on a rehab</span><span><span>&nbsp;</span></span><span class="minimize preserve-whitespace" id="yui_3_18_1_1_1509459230176_2913"> project, where Gary has made multiple appearances throughout the build to check in; giving experienced advice on what buyers will typically be looking for in a home. From working with him, you will get a sense that he is deeply invested in what you are trying to do. The last home we flipped, Gary was with us every step of the way. Nearly 100 forms needed signed and we never broke a sweat, as he took care of everything smoothly and accurately. When we listed our project on the market, Gary had professional pictures taken of each room, along with a detailed description of the house. Needless to say, our home was on the market for a total of three days before we accepted an offer. Whether you are a first time home buyer, or a seasoned real estate investor, you will not regret building a relationship with Gary. I've never had trouble contacting him, and he always responds promptly.</span><span><span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></span></div>
+<div class="review-work-done">
+<div id="yui_3_18_1_1_1509459230176_2920" class="review-reviewer-info review-received"><strong>05/06/2016 -&nbsp;<a href="https://www.zillow.com/profile/412Agent">Anthony Angotti</a></strong></div>
+<div id="yui_3_18_1_1_1509459230176_2917" class="review-work-done"><strong>Bought a Multi Family home in 2016 in Dormont, Pittsburgh, PA.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</strong></div>
+<div class="review-work-done">Gary was very easy to work with and very knowledgeable. As a first time home buyer I felt the process was very well explained and easier than it would have been without his help. Made everything feel very straightforward.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+<div class="review-work-done">
+<div id="yui_3_18_1_1_1509459230176_2929" class="review-reviewer-info review-received"><strong>05/05/2016 -&nbsp;<a href="https://www.zillow.com/profile/JohnReiter8">JohnReiter8</a></strong></div>
+<div id="yui_3_18_1_1_1509459230176_2924" class="review-work-done"><strong>Bought a Single Family home in 2016 in Beechview, Pittsburgh, PA.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</strong></div>
+<div class="review-work-done">Working with Gary was one of the best experiences! After a long run with another realtor I switched to him and within a week found the house I exactly wanted! I highly recommend him to anyone.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+</div>
+</div>
+<div class="review-work-done">
+<div id="yui_3_18_1_1_1509459230176_2935" class="review-reviewer-info review-received"><strong>09/29/2015 -&nbsp;<a href="https://www.zillow.com/profile/bvilleneuve">bvilleneuve</a></strong></div>
+<div id="yui_3_18_1_1_1509459230176_2931" class="review-work-done"><strong>Sold a Condo home in 2015 in Brighton Heights, Pittsburgh, PA.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</strong></div>
+<div class="review-work-done">Gary was great to work with. I relied on him heavily and he always came through. His response time was immediate and very appreciated. He was always available 24/7. I would use Gary again if the opportunity presented itself.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+<div class="review-work-done">
+<section id="yui_3_18_1_1_1509459230176_2940" class="review-response-container zsg-content-item review-response">
+<div id="yui_3_18_1_1_1509459230176_2939" class="zsg-media">
+<div id="yui_3_18_1_1_1509459230176_2938" class="review-response-container zsg-media-bd">
+<div id="yui_3_18_1_1_1509459230176_3001" class="review-reviewer-info review-received"><strong>09/16/2015 -&nbsp;<a href="https://www.zillow.com/profile/user09718441">user09718441</a></strong></div>
+<div id="yui_3_18_1_1_1509459230176_2997" class="review-work-done"><strong>Helped me rent a Multi Family home in Pittsburgh, PA.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</strong></div>
+<div class="review-work-done"><span class="preserve-whitespace" id="yui_3_18_1_1_1509459230176_3007">Gary has been great to work with. As out of town investors, we need extra help getting things done in Pittsburgh, and Gary is willing to do whatever it takes to help us out. He will go visit properties for us and send us a summary of his thoughts and photos that he takes. He is also candid with</span>&nbsp;<span class="minimize preserve-whitespace"> his advice, telling us what may be a good investment or not. He is very communicative with sellers and gets the information that we as buyers need in a timely manner. And when we were in town for a couple days he arranged tours of a number of properties and gave us all his time for two entire days. We highly recommend Gary.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div class="review-work-done">
+<div id="yui_3_18_1_1_1509459230176_3013" class="review-reviewer-info review-received"><strong>08/18/2015 - Lisa Cannon Tom Mayers</strong></div>
+<div id="yui_3_18_1_1_1509459230176_3009" class="review-work-done"><strong>Bought a Condo home in 2015 in Brighton Heights, Pittsburgh, PA.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</strong></div>
+<div class="review-work-done"><span>We highly recommend Gary. He was friendly and very professional throughout the proces, always taking the time to answer our questions. He made our home purchase go very smoothly.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+</div>
+<div id="yui_3_18_1_1_1509459230176_3022" class="review-reviewer-info review-received"><strong>01/20/2015 -&nbsp;<a href="https://www.zillow.com/profile/jkbs98">jkbs98</a></strong></div>
+<div id="yui_3_18_1_1_1509459230176_3018" class="review-work-done"><strong>Sold a Single Family home in 2014 in Brookline, Pittsburgh, PA.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong></div>
+<div class="review-work-done"><span class="preserve-whitespace">Gary Swank was very helpful in the process of selling my house in ways that I never even thought of. He walked me through the whole process with ease. He was there to help me coordinate contractors and even met with them when I was unable to do so. I will not hesitate to call on Gary again and</span><span><span>&nbsp;</span></span><span class="minimize preserve-whitespace"> again when I am ready to buy or sell again. You can't go wrong with Gary, he's honest and very knowledgeable about the market and has the facts to back it up. I would strongly recommend him to anyone!</span><span><span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></span></div>
+<div class="review-work-done">
+<div class="review-reviewer-info review-received"><strong>08/29/2014 - leanna</strong></div>
+<div id="yui_3_18_1_1_1509459230176_3028" class="review-work-done"><strong>Sold a home in 2014.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong></div>
+<div class="review-work-done"></div>
+<div class="review-work-done">Gary was responsive, accessible and able to meet all my needs. He is friendly and trustworthy. He was thorough and thoughtful when offering me advice and never pushy. His advice about how I should prep my house for sale was very beneficial. I strongly recommend Gary!!!!&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</div>
+</div>
+<div class="review-reviewer-info review-received"><strong>08/14/2014 - mamasmoo</strong></div>
+<div id="yui_3_18_1_1_1509459230176_3034" class="review-work-done"><strong>Sold a Single Family home in 2014 in Moon Township, PA.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong></div>
+<div class="review-work-done"><span class="preserve-whitespace">It was refreshing to be associated with an agent that was so knowledgeable about how to bring potential buyers in. He assisted me in house staging which ultimately, I think , sold my house. He gave me tips to entice buyers when they viewed the house in my absence. Even down to the aromas in the air</span>&nbsp;<span class="minimize preserve-whitespace"> that would make my house memorable, when they were looking at several homes at a time. Gary was always re-assuring and enthsiastic. He made a tedious job like selling a house a fun experience. His negotiation abilities were assertive in a very positive way. I will surely recommend him to anyone in the Pittsburgh area that is looking for a positive experience when selling their home!</span></div>
+<div class="review-work-done"><span class="minimize preserve-whitespace"></span></div>
+<div class="review-work-done"></div>
+<div class="review-work-done"><span class="minimize preserve-whitespace"><span></span></span></div>
+<div class="review-work-done"></div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</section>
+<p>&nbsp;</p>
+            </section>
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+
+
+    </div> 
+
+    <footer class="site-footer site-footer-white-bg">
+    <div class="site-container">
+
+    <div class="site-row">
+        <div class="site-column quarter">
+
+            <ul class="no-bullet footer-address">
+                <li class="site-footer-logo">
+                    <a href="https://www.RealEstateSolutionsPittsburgh.com/rees" target="_blank" rel="nofollow">
+                        <img src="https://content.mediastg.net/static/RealEstate/company/381/012-logo.png" class="site-footer-company-logo site-footer-company-logo-black" alt="Logo" />
+                        <img src="https://content.mediastg.net/static/RealEstate/company/381/013-logo.png" class="site-footer-company-logo site-footer-company-logo-white" alt="Logo" />
+                    </a>
+
+                </li>
+                <li class="office">
+                        <a href="http://realestatesolutions0420136.realestatesolutionspittsburgh.com" target="_blank">Real Estate Solutions - Lawrenceville</a>
+                </li>
+                <li>4020 Butler St</li>
+                <li>Pittsburgh, PA 15201-3225</li>
+                <li>Office Phone: (412) 366-2900</li>
+            </ul>
+
+
+        </div>
+
+        <div class="site-column quarter">
+            <ul class="no-bullet footer-account-info">
+                    <li class="site-footer-name">Gary Swank</li>
+                    <li>REALTOR<sup>&reg;</sup></li>
+                    <li>RS229093</li>
+                        <li>Mobile Phone: (412) 315-4595</li>
+            </ul>
+                <h2>Follow me</h2>
+                <ul class="no-bullet footer-social">
+                                    <li class="social-facebook"><a target="_blank" href="https://www.facebook.com/garyswankpittsburghrealtor"><i class="rni-facebook"></i></a></li>
+                    <li class="social-twitter"><a target="_blank" href="https://twitter.com/gswankrealtor"><i class="rni-twitter"></i></a></li>
+                <li class="social-misc"><a target="_blank" href="https://www.linkedin.com/in/garyswank/"><i class="rni-linkedin"></i></a></li>
+                <li class="social-blog"><a target="_blank" href="https://garyswankrealtor.blogspot.com/"><i class="rni-rss"></i></a></li>
+
+
+                </ul>
+        </div>
+
+
+
+
+        <div class="site-column half">
+            <h2>Contact</h2>
+            <div class="site-footer-form-submit-message" name="footerContactMessageSent" id="footerContactMessageSent" style="display:none">
+                <p style="margin-bottom: 8px">Thank you, your message has been sent.</p>
+            </div>
+
+            <form name="footerContact" id="footerContact" onsubmit="return footerContactFormSubmit();">
+                <input value="Contact Us" type="hidden" name="form" id="form" />
+                <input value="Contact Me" type="hidden" name="subject" id="subject" />
+                <input class="name" type="text" placeholder="Name" name="first" id="first" />
+                <input class="email" type="email" placeholder="Email" name="from" id="from" />
+                <textarea placeholder="Message" class="message" name="message" id="message"></textarea>
+                <input type="submit" value="Send" name="footerContactSendButton" id="footerContactSendButton" />
+
+            </form>
+
+
+        </div>
+    </div>
+
+    <div class="site-footer-disclaimer">
+    <p><p>Each RE/MAX Office is Independently Owned and Operated. Equal Housing Opportunity.</p></p>
+
+    <p><p class="site-footer-reliance-disclaimer">© 2019 Reliance Network and RE/MAX Real Estate Solutions. All rights reserved. U.S. Reg. Copyright TX-5-910-991, TX-5-910-992, TX-5-910-993, and TX-5-910-994. Equal Housing Opportunity.</p><p><a href="https://www.reliancenetwork.com/accessibility-commitment" target="_blank" style="text-decoration:underline">Our Commitment to Accessibility</a></p></p>
+</div>
+
+<div class="site-footer-branding site-container">
+    <a href="https://www.reliancenetwork.com" target="_blank" rel="nofollow"><img class="site-footer-reliance-logo-black" src="/dist/img/components/reliance-logo-black.png" alt="Reliance Network Logo"><img class="site-footer-reliance-logo-white" src="/dist/img/components/reliance-logo-white.png" alt="Reliance Network Logo"></a>
+
+
+    
+
+    <a class="site-agent-access-link" href="http://intranet.RealEstateSolutionsPittsburgh.com/" target="_blank">Agent Access</a>
+</div>
+
+</div>
+
+</footer>
+
+
+<script>
+    var agentAccountId = 383977;
+    var agentCompanyId = 381;
+    var companyApiKey = 'N0ZqCkExNHBUaEF6Smg5';
+    var companyAbbr = 'rees';
+    var companyId = '381';
+    var isTeam = 'False';
+         var rnLayoutName = 'homeandliving3'; 
+    var interiortotalpages = 0;
+</script>
+
+
+<script src="/Areas/CMS/Views/cms-templates/js/css-vars-polyfill.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="/dist/js/cms.js"></script>
+    <script src="/dist/js/site/homeandliving3-app.js"></script>
+
+
+
+
+
+    
+
+    </body>
+    </html>

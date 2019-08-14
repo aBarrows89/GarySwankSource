@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="MobileOptimized" content="width" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta http-equiv="cleartype" content="on" />
+    <META HTTP-EQUIV="Content-Language" CONTENT="EN" />
+    <META NAME="MSSmartTagsPreventParsing" CONTENT="TRUE" />
+    <META NAME="rating" CONTENT="General" />
+    <META NAME="MS.LOCALE" CONTENT="EN-US" />
+    <META NAME="CATEGORY" CONTENT="home page" />
+    <META NAME="robots" CONTENT="index,follow" />
+    <META NAME="revisit-after" CONTENT="31 days" />
+    <META NAME="DC.Coverage.PlaceName" CONTENT="Global" />
+    <META NAME="author" CONTENT="Reliance Network" />
+    <META NAME="distribution" CONTENT="Global" />
+
+    
+
+
+            <title>REI</title>
+            <meta name="keywords" content="real estate, homes, homes for sale, investment property, REI, Pittsburgh real estate, Pittsburgh homes, home buyers, home sellers, " />
+
+    <!-- Scripts -->
+    <script src="//code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/scripts/reliance.jsx?id=381&account=383977"></script>
+    <script type="text/javascript" src="/scripts/site.jsx?id=381&siteDirectory=rees&account=383977&culture=en"></script>
+
+    <!--System Branding-->
+    <link id="searchPolyFillTarget" href="/Areas/CMS/Views/cms-templates/css/global-branding.min.css?v=1.0.7159.20177-rc+598.11dd967c.hotfix--8-8-2019" rel="stylesheet">
+
+    <style>
+        :root {
+            --company-primary-color: #00308A;
+            --company-secondary-color: #777777;
+            --company-tertiary-color: #EE1C26;
+        }
+    </style>
+
+    <!-- JSON-LD -->
+    <script type='application/ld+json'>
+        {
+        "@context":"http://schema.org",
+        "@type":"WebSite",
+        "@id":"#website",
+        "url":"https://garyswank.realestatesolutionspittsburgh.com/",
+        "name": "RE/MAX Real Estate Solutions - Gary Swank",
+        "potentialAction":
+        {
+        "@type":"SearchAction",
+        "target": "https://garyswank.realestatesolutionspittsburgh.com/searchredirect.aspx?cityzip={search_term_string}",
+        "query-input":"required name=search_term_string"
+        }
+        }
+    </script>
+
+</head>
+
+<body class="site-interior-page" id="homeandliving3">
+
+    
+<!-- Styles -->
+<!-- Slider -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.6.0/slick/slick.css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.css" rel="stylesheet">
+
+<!-- Layout Styling -->
+    <link id="polyFillTarget" href="/dist/css/site/homeandliving3.css" rel="stylesheet">
+
+<!-- Featured Properties and Saved Search calls -->
+<script>
+
+    var interiortotalcount = 0;
+    var interiortotalpages = 0;
+
+
+
+    //CMS Featured Properties Content Type Call
+    function getFeaturedPropertiesApi(contentID, pageSize, pageNumber, FilePath, featuredpropertiesID) {
+        $.ajax({
+            url: '/CMS/CmsContent/GetFeaturedPropertiesFromContentID',
+            dataType: 'html',
+            data: {
+                contentID: contentID,
+                accountID: agentAccountId,
+                pageSize: pageSize,
+                pageNumber: pageNumber,
+                relianceApiKey: companyApiKey,
+                FilePath: FilePath
+            },
+            success: function (data) {                
+                $('#' + featuredpropertiesID).html(data);
+                if (FilePath == 'InteriorFeaturedProperties') {
+                    
+                    $('#' + featuredpropertiesID + '-totalcount-properties').text(interiortotalcount + ' Properties');
+                    $('#' + featuredpropertiesID + '-totalpages-of').text('Page 1 of ' + interiortotalpages);
+                } else if(FilePath == 'BioFeaturedProperties') {
+
+                }
+
+                featuredPropertiesSuccess();
+
+                if ($('body').is('#' + rnLayoutName)) {
+                   //console.log('agentweb');
+                } else {
+                    //console.log('crm');
+                    $('#' + featuredpropertiesID).click(function (e) {
+                        e.preventDefault();
+                    });
+                }
+                
+            }
+        });
+    }
+    
+
+
+
+     //CMS Saved Search From SearchID
+    function getSavedSearchListings(searchID, mlsid, pageSize, pageNumber, FilePath, savedsearchID) {        
+        $.ajax({
+            url: '/CMS/CmsContent/GetSavedSearchFromSearchID',
+            dataType: 'html',
+            data: {
+                searchID: searchID,
+                accountID: agentAccountId,
+                mlsID: mlsid,
+                companyID: agentCompanyId,
+                pageSize: pageSize,
+                pageNumber: pageNumber,
+                FilePath: FilePath
+            },
+            success: function (data) {
+                $('#' + savedsearchID).html(data);               
+                if (FilePath == 'InteriorSavedSearchPage') {
+                    $('#' + savedsearchID + '-totalcount-properties').text(interiortotalcount + ' Properties');
+                    $('#' + savedsearchID + '-totalpages-of').text('Page 1 of ' + interiortotalpages);
+                }
+                
+            }
+        });
+    }
+</script>
+
+
+
+
+
+
+<style>
+    :root {
+        --main-color: #48687d;
+        --main-darken: rgb(15, 21, 26);
+        --main-transparent-7: rgba(72, 104, 125, 0.7);
+    }
+</style>
+
+
+<header class="site-header">
+
+    <div class="site-header-contact">
+        <div class="site-container">
+            <ul class="site-header-phone-numbers">
+                    <li>Office Phone - 412.366.2900</li>
+                        <li>Mobile Phone - 412.315.4595</li>
+            </ul>
+
+
+            <ul>
+                <li><a onclick="$(window).trigger('contactmeclick')"><i class="rni-mail"></i></a></li>
+                                <li class="social-facebook"><a target="_blank" href="https://www.facebook.com/garyswankpittsburghrealtor"><i class="rni-facebook"></i></a></li>
+                    <li class="social-twitter"><a target="_blank" href="https://twitter.com/gswankrealtor"><i class="rni-twitter"></i></a></li>
+                <li class="social-misc"><a target="_blank" href="https://www.linkedin.com/in/garyswank/"><i class="rni-linkedin"></i></a></li>
+                <li class="social-blog"><a target="_blank" href="https://garyswankrealtor.blogspot.com/"><i class="rni-rss"></i></a></li>
+
+
+                <li>
+
+
+                        <a href="/?p=findahome.asp&page=extranet&selected=dashboard" class="site-header-nav-login">
+                            <i class="rni-user login"></i>
+                        </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <div class="site-header-logo-nav">
+        <div class="site-container">
+            <div class="site-header-mobile-account" id="siteHeaderMobileAccount">
+        <img src="https://content.mediastg.net/dynamic/RealEstate/company/381/account/383977/photo.jpg" />
+</div>
+
+<ul class="site-header-mobile-account-info">
+    <li class="account-name">Gary Swank</li>
+    <li>REALTOR&lt;sup&gt;&amp;reg;&lt;/sup&gt;</li>
+
+        <li><a href="tel:14123154595"><i class="rni-call"></i> 412.315.4595</a></li>
+        <li><a href="tel:14123662900"><i class="rni-call"></i> 412.366.2900</a></li>
+
+        <li><a href="mailto:garyswank.realtor@gmail.com"><i class="rni-mail"></i> Email Me</a></li>
+</ul>
+
+            <div class="site-header-logo">
+                <a href="/">
+                    <div class="site-header-global-logo">
+
+	    <img src="https://content.mediastg.net/static/RealEstate/company/381/012-logo.png" alt="RE/MAX Real Estate Solutions Logo">
+
+        <div class="site-header-global-office-name">Real Estate Solutions - Lawrenceville</div>
+
+</div>
+
+                    <div class="site-header-name">
+                         Gary<br> Swank
+
+                         <div class="site-header-license">
+                            RS229093
+                        </div>
+                    </div>
+                </a>
+
+                
+            </div>
+
+            <nav role="navigation">
+                
+<ul id="siteHeaderNavigation" style="list-style:none;">
+
+<li class="has-dropdown">                <a>Property Search - 1 </a>
+                <ul class="dropdown" style="list-style: none">
+                            <li><a href="/properties-for-sale" >Property Search - 2</a></li>
+                            <li><a href="/Featured-Properties" >Featured Properties</a></li>
+                            <li><a href="/?p=findahome.asp&amp;page=extranet&amp;selected=dashboard" >My Property Finder</a></li>
+                            <li><a href="/?p=openhouses.asp" >Open Houses</a></li>
+                            <li><a href="/?p=virtualtours.asp" >Virtual Tours</a></li>
+                            <li><a href="/?p=findahome.asp&amp;page=search&amp;selected=mr&amp;mode=N&amp;help=true" >Home Trends</a></li>
+                </ul>
+<li class="has-dropdown">                <a>For Investors </a>
+                <ul class="dropdown" style="list-style: none">
+                            <li><a href="/REI" >REI</a></li>
+                </ul>
+<li class="has-dropdown">                <a>About Me </a>
+                <ul class="dropdown" style="list-style: none">
+                            <li><a href="https://garyswankrealtor.blogspot.com/" target = _blank>My Blog</a></li>
+                            <li><a href="/My-Reviews" >My Reviews</a></li>
+                            <li><a href="/?p=professionalprofile.asp" >Areas Of Expertise</a></li>
+                </ul>
+<li>                <a href="/About-Pittsburgh" >Pittsburgh Info </a>
+<li>                <a href="/About-Pittsburgh" >About Pittsburgh </a>
+<li>                <a href="/Contact" >Contact </a>
+</li></ul>
+
+                <button class="site-header-nav-button" id="navBurger"><span class="site-header-nav-burger"></span></button>
+
+                    <a href="/?p=findahome.asp&page=extranet&selected=dashboard" class="site-header-nav-login">
+                        <i class="rni-user"></i>
+                    </a>
+
+                <a href="/?p=findahome.asp&mode=N" class="site-header-search-button" id="rnSearchCriteriaButton"><i class="rni-search"></i></a>
+
+            </nav>
+        </div>
+    </div>
+
+</header>
+
+
+
+
+
+
+        
+
+
+    
+
+    <div class="site-global-container"> 
+
+
+
+
+
+<div class="site-interior-container">
+
+    <div class="site-row">
+        <div class="site-column full">
+            <section class="site-interior-editor-content" id="interior-text-1-preview-1813">
+                <div style="text-align: center;"><span><span style="color: #000000;">Pittsburgh is a hot real estate investment market...just ask any of my clients.&nbsp; Other cities have seen extremely high purchase prices while Pittsburgh remains a more cost-effective alternative with better buy-ins and greater return on investment.&nbsp; Pittsburgh has also been dubbed as the 2nd "Silicon Valley" with it's tech influence largely funded by big named companies such as Amazon, Apple, Argo AI and Uber who have set up shop here. It already has a world renowned medical presence and technological advancements that have been supported by a comprehensive higher education system largely supported by CMU, Pitt and many others. Our proactive Mayor and County Executive have and continue to spearhead many initiatives slated for continued growth.&nbsp; As a result, many city and suburban areas are seeing strong revitalization.&nbsp; And&nbsp;neighborhoods are being upgraded to reflect that growth!</span></span><span></span></div>
+<div style="text-align: center;"><span><span style="color: #000000;">&nbsp;</span></span></div>
+<div style="text-align: center;"><span style="color: #000000;"><span>The trick, of course, is to get into those areas ahead of the rest, before they explode.&nbsp; Many investors have asked my team for assistance in finding those "up and coming" neighborhoods in Pittsburgh.&nbsp;&nbsp;</span><span>I have lived here my whole life so I know the area and market very well.&nbsp;&nbsp;</span><span>I continue to work with many investors, both local and remote to the area, in various real estate investment transactions including Buy and Hold, Multifamily, Remodel/Rehab (Flips) and Small Commercial Properties. I'm proud to support you in finding the type of investment property that works best for you. And when it comes time to sell your existing property, my team is here for you.&nbsp;</span>&nbsp;</span></div>
+<div style="text-align: center;"><i><span style="color: #000000;">&nbsp;</span></i></div>
+<div style="text-align: center;"><i><i><span style="color: #000000;">Let's have a discussion about your plans and goals for investing in the greater Pittsburgh area! <span>Call me or use the contact form below.</span><span><br /><br /><br /><code>
+<script src="https://www.reliancenetwork.com/widgets/?file=popupformlinks&amp;token=NTVCakZq&amp;links=contactme" type="mce-text/javascript"></script>
+</code><br /><img src="https://content.mediastg.net/dyna_images//agents/381/383977/20190103092732.png" border="0" /><br /><br /></span></span></i></i>
+<div>Here are some helpful links that Pittsburgh Real Estate investors might use:&nbsp;</div>
+<div></div>
+<div><a title="Protected by Outlook: https://www.bizjournals.com/pittsburgh/. Click or tap to follow the link." href="https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.bizjournals.com%2Fpittsburgh%2F&amp;data=02%7C01%7C%7C27c6d5dd0e59467ff0d808d66b9b778a%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C636814712811766252&amp;sdata=v9XCq3KSJmkcpyzE4uZJwo6stbGKa3Fmn1E7%2BTNKaqI%3D&amp;reserved=0" rel="noopener noreferrer" target="_blank" data-saferedirecturl="https://www.google.com/url?q=https://eur03.safelinks.protection.outlook.com/?url%3Dhttps%253A%252F%252Fwww.bizjournals.com%252Fpittsburgh%252F%26data%3D02%257C01%257C%257C27c6d5dd0e59467ff0d808d66b9b778a%257C84df9e7fe9f640afb435aaaaaaaaaaaa%257C1%257C0%257C636814712811766252%26sdata%3Dv9XCq3KSJmkcpyzE4uZJwo6stbGKa3Fmn1E7%252BTNKaqI%253D%26reserved%3D0&amp;source=gmail&amp;ust=1546169789916000&amp;usg=AFQjCNHRNkZW64mX-rwmCCpdDbDRruz51A">Pittsburgh Business Times</a></div>
+<div><a title="Protected by Outlook: https://www.facebook.com/groups/Pittsburghrealestateinvestors/. Click or tap to follow the link." href="https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.facebook.com%2Fgroups%2FPittsburghrealestateinvestors%2F&amp;data=02%7C01%7C%7C27c6d5dd0e59467ff0d808d66b9b778a%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C636814712811766252&amp;sdata=ptfhUk%2F4B5d90Q7qnIXmZuDVVjybkbjwRcz61wEE0Dg%3D&amp;reserved=0" rel="noopener noreferrer" target="_blank" data-saferedirecturl="https://www.google.com/url?q=https://eur03.safelinks.protection.outlook.com/?url%3Dhttps%253A%252F%252Fwww.facebook.com%252Fgroups%252FPittsburghrealestateinvestors%252F%26data%3D02%257C01%257C%257C27c6d5dd0e59467ff0d808d66b9b778a%257C84df9e7fe9f640afb435aaaaaaaaaaaa%257C1%257C0%257C636814712811766252%26sdata%3DptfhUk%252F4B5d90Q7qnIXmZuDVVjybkbjwRcz61wEE0Dg%253D%26reserved%3D0&amp;source=gmail&amp;ust=1546169789916000&amp;usg=AFQjCNFSM7uyUApNDFHZnN_3bA1JxExu9Q">Pittsburgh Real Estate Investors on Facebook</a></div>
+<div><a title="Protected by Outlook: https://www.linkedin.com/groups/48222/. Click or tap to follow the link." href="https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.linkedin.com%2Fgroups%2F48222%2F&amp;data=02%7C01%7C%7C27c6d5dd0e59467ff0d808d66b9b778a%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C636814712811766252&amp;sdata=CIt5FIg3GzNE48FDgE9Q26dsrXiNoGRqX7lLWAoMNEk%3D&amp;reserved=0" rel="noopener noreferrer" target="_blank" data-saferedirecturl="https://www.google.com/url?q=https://eur03.safelinks.protection.outlook.com/?url%3Dhttps%253A%252F%252Fwww.linkedin.com%252Fgroups%252F48222%252F%26data%3D02%257C01%257C%257C27c6d5dd0e59467ff0d808d66b9b778a%257C84df9e7fe9f640afb435aaaaaaaaaaaa%257C1%257C0%257C636814712811766252%26sdata%3DCIt5FIg3GzNE48FDgE9Q26dsrXiNoGRqX7lLWAoMNEk%253D%26reserved%3D0&amp;source=gmail&amp;ust=1546169789916000&amp;usg=AFQjCNGcUcB9u4nCOH3e3EoK4GE-kuSGLQ">Pittsburgh Real Estate Investors Group on LinkedIn</a></div>
+</div>
+            </section>
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+
+
+    </div> 
+
+    <footer class="site-footer site-footer-white-bg">
+    <div class="site-container">
+
+    <div class="site-row">
+        <div class="site-column quarter">
+
+            <ul class="no-bullet footer-address">
+                <li class="site-footer-logo">
+                    <a href="https://www.RealEstateSolutionsPittsburgh.com/rees" target="_blank" rel="nofollow">
+                        <img src="https://content.mediastg.net/static/RealEstate/company/381/012-logo.png" class="site-footer-company-logo site-footer-company-logo-black" alt="Logo" />
+                        <img src="https://content.mediastg.net/static/RealEstate/company/381/013-logo.png" class="site-footer-company-logo site-footer-company-logo-white" alt="Logo" />
+                    </a>
+
+                </li>
+                <li class="office">
+                        <a href="http://realestatesolutions0420136.realestatesolutionspittsburgh.com" target="_blank">Real Estate Solutions - Lawrenceville</a>
+                </li>
+                <li>4020 Butler St</li>
+                <li>Pittsburgh, PA 15201-3225</li>
+                <li>Office Phone: (412) 366-2900</li>
+            </ul>
+
+
+        </div>
+
+        <div class="site-column quarter">
+            <ul class="no-bullet footer-account-info">
+                    <li class="site-footer-name">Gary Swank</li>
+                    <li>REALTOR<sup>&reg;</sup></li>
+                    <li>RS229093</li>
+                        <li>Mobile Phone: (412) 315-4595</li>
+            </ul>
+                <h2>Follow me</h2>
+                <ul class="no-bullet footer-social">
+                                    <li class="social-facebook"><a target="_blank" href="https://www.facebook.com/garyswankpittsburghrealtor"><i class="rni-facebook"></i></a></li>
+                    <li class="social-twitter"><a target="_blank" href="https://twitter.com/gswankrealtor"><i class="rni-twitter"></i></a></li>
+                <li class="social-misc"><a target="_blank" href="https://www.linkedin.com/in/garyswank/"><i class="rni-linkedin"></i></a></li>
+                <li class="social-blog"><a target="_blank" href="https://garyswankrealtor.blogspot.com/"><i class="rni-rss"></i></a></li>
+
+
+                </ul>
+        </div>
+
+
+
+
+        <div class="site-column half">
+            <h2>Contact</h2>
+            <div class="site-footer-form-submit-message" name="footerContactMessageSent" id="footerContactMessageSent" style="display:none">
+                <p style="margin-bottom: 8px">Thank you, your message has been sent.</p>
+            </div>
+
+            <form name="footerContact" id="footerContact" onsubmit="return footerContactFormSubmit();">
+                <input value="Contact Us" type="hidden" name="form" id="form" />
+                <input value="Contact Me" type="hidden" name="subject" id="subject" />
+                <input class="name" type="text" placeholder="Name" name="first" id="first" />
+                <input class="email" type="email" placeholder="Email" name="from" id="from" />
+                <textarea placeholder="Message" class="message" name="message" id="message"></textarea>
+                <input type="submit" value="Send" name="footerContactSendButton" id="footerContactSendButton" />
+
+            </form>
+
+
+        </div>
+    </div>
+
+    <div class="site-footer-disclaimer">
+    <p><p>Each RE/MAX Office is Independently Owned and Operated. Equal Housing Opportunity.</p></p>
+
+    <p><p class="site-footer-reliance-disclaimer">© 2019 Reliance Network and RE/MAX Real Estate Solutions. All rights reserved. U.S. Reg. Copyright TX-5-910-991, TX-5-910-992, TX-5-910-993, and TX-5-910-994. Equal Housing Opportunity.</p><p><a href="https://www.reliancenetwork.com/accessibility-commitment" target="_blank" style="text-decoration:underline">Our Commitment to Accessibility</a></p></p>
+</div>
+
+<div class="site-footer-branding site-container">
+    <a href="https://www.reliancenetwork.com" target="_blank" rel="nofollow"><img class="site-footer-reliance-logo-black" src="/dist/img/components/reliance-logo-black.png" alt="Reliance Network Logo"><img class="site-footer-reliance-logo-white" src="/dist/img/components/reliance-logo-white.png" alt="Reliance Network Logo"></a>
+
+
+    
+
+    <a class="site-agent-access-link" href="http://intranet.RealEstateSolutionsPittsburgh.com/" target="_blank">Agent Access</a>
+</div>
+
+</div>
+
+</footer>
+
+
+<script>
+    var agentAccountId = 383977;
+    var agentCompanyId = 381;
+    var companyApiKey = 'N0ZqCkExNHBUaEF6Smg5';
+    var companyAbbr = 'rees';
+    var companyId = '381';
+    var isTeam = 'False';
+         var rnLayoutName = 'homeandliving3'; 
+    var interiortotalpages = 0;
+</script>
+
+
+<script src="/Areas/CMS/Views/cms-templates/js/css-vars-polyfill.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="/dist/js/cms.js"></script>
+    <script src="/dist/js/site/homeandliving3-app.js"></script>
+
+
+
+
+
+    
+
+    </body>
+    </html>
+
+
